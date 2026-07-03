@@ -40,6 +40,7 @@ function Register() {
             type="text"
             name="username"
             placeholder="Full Name"
+            value={user.username}
             onChange={handleChange}
             required
           />
@@ -48,6 +49,7 @@ function Register() {
             type="email"
             name="email"
             placeholder="Email"
+            value={user.email}
             onChange={handleChange}
             required
           />
@@ -56,6 +58,7 @@ function Register() {
             type="password"
             name="password"
             placeholder="Password"
+            value={user.password}
             onChange={handleChange}
             required
           />
