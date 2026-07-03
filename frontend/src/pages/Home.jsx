@@ -78,7 +78,7 @@ function Home() {
 
   if (img.startsWith("http")) return img;
 
-  return `http://localhost:5000${img}`;
+  return `https://social-media-platform-1-8ssl.onrender.com${img}`;
 };
   return (
     <>
