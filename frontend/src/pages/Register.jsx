@@ -18,6 +18,7 @@ function Register() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    console.log("USER DATA:", user);
 
     try {
       await API.post("/auth/register", user);

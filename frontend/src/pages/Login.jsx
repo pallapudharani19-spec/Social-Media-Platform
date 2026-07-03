@@ -17,7 +17,8 @@ function Login() {
         password,
       });
 
-      localStorage.setItem("user Id", res.data.token);
+      localStorage.setItem("token", res.data.token);
+localStorage.setItem("userId", res.data.user.id);
       alert("Login Successful!");
       navigate("/home");
     } catch (err) {
