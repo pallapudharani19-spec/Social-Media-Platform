@@ -63,10 +63,16 @@ function CreatePost() {
             onChange={(e) => setImage(e.target.files[0])}
           />
 
-          <button
-            className="post-btn"
-            type="submit"
-          >
+          {/* Optional preview (VERY USEFUL) */}
+          {image && (
+            <img
+              src={URL.createObjectURL(image)}
+              alt="preview"
+              style={{ width: "100px", marginTop: "10px" }}
+            />
+          )}
+
+          <button className="post-btn" type="submit">
             Post
           </button>
         </form>

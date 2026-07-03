@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
-import "../styles/messages.css";
+import "../styles/Message.css";
 
 function Messages() {
   const navigate = useNavigate();

@@ -114,7 +114,7 @@ function UserProfile() {
           <div key={post.id} className="grid-box">
             {post.image ? (
               <img
-                src={`https://social-media-platform-gli9.onrender.com${post.image}`}
+                src={`https://localhost:5000${post.image}`}
                 alt=""
                 className="grid-image"
               />

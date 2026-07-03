@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import API from "../services/api";
 import CommentBox from "../components/CommentBox";
 import BottomNav from "../components/BottomNav";
-import {FaUsers} from "react-icons/fa";
-import { useNavigate} from "react-router-dom";
+import { FaUsers } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "../styles/home.css";
 
 function Home() {
@@ -56,36 +56,45 @@ function Home() {
       alert("Failed to delete post");
     }
   };
+
   const deleteComment = async (commentId) => {
-  try {
-    await API.delete(`/posts/comment/${commentId}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    try {
+      await API.delete(`/posts/comment/${commentId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
 
-    fetchPosts();
-  } catch (err) {
-    console.log(err);
-    alert("Failed to delete comment");
-  }
+      fetchPosts();
+    } catch (err) {
+      console.log(err);
+      alert("Failed to delete comment");
+    }
+  };
+
+  // ✅ SAFE IMAGE HANDLER (IMPORTANT FIX)
+  const getImageUrl = (img) => {
+  if (!img) return "";
+
+  if (img.startsWith("http")) return img;
+
+  return `http://localhost:5000${img}`;
 };
-
   return (
     <>
       <div className="home-wrapper">
 
         {/* Header */}
         <div className="top-header">
-  <h1 className="app-name">Social Hub</h1>
+          <h1 className="app-name">Social Hub</h1>
 
-  <button
-    className="users-btn"
-    onClick={() => navigate("/users")}
-  >
-    <FaUsers />
-  </button>
-</div>
+          <button
+            className="users-btn"
+            onClick={() => navigate("/users")}
+          >
+            <FaUsers />
+          </button>
+        </div>
 
         {/* Stories */}
         <div className="stories-container">
@@ -125,7 +134,7 @@ function Home() {
 
                 {post.image && (
                   <img
-                    src={`${import.meta.env.VITE_API_URL || "https://social-media-platform-gli9.onrender.com"}${post.image}`}
+                    src={getImageUrl(post.image)}
                     alt="Post"
                     className="post-image"
                   />
@@ -133,25 +142,23 @@ function Home() {
               </div>
 
               <div className="post-actions">
-               <button onClick={() => likePost(post.id)}>
-  <span
-    style={{
-      color: post.likes.some(
-        (like) =>
-          like.userId === Number(localStorage.getItem("userId"))
-      )
-        ? "red"
-        : "black",
-    }}
-  >
-    ❤️
-  </span>{" "}
-  {post.likes.length}
-</button>
-
-                <button>
-                  💬
+                <button onClick={() => likePost(post.id)}>
+                  <span
+                    style={{
+                      color: post.likes.some(
+                        (like) =>
+                          like.userId === Number(localStorage.getItem("userId"))
+                      )
+                        ? "red"
+                        : "black",
+                    }}
+                  >
+                    ❤️
+                  </span>{" "}
+                  {post.likes.length}
                 </button>
+
+                <button>💬</button>
 
                 <button
                   className="delete-btn"
@@ -160,30 +167,31 @@ function Home() {
                   🗑️ Delete
                 </button>
               </div>
+
               {post.comments?.length > 0 && (
-  <div className="comments-section">
-    {post.comments.map((comment) => (
-      <div key={comment.id} className="comment">
-        <div className="comment-content">
-          <span className="comment-user">
-            {comment.user?.name}
-          </span>
+                <div className="comments-section">
+                  {post.comments.map((comment) => (
+                    <div key={comment.id} className="comment">
+                      <div className="comment-content">
+                        <span className="comment-user">
+                          {comment.user?.name}
+                        </span>
 
-          <span className="comment-text">
-            {comment.text}
-          </span>
-        </div>
+                        <span className="comment-text">
+                          {comment.text}
+                        </span>
+                      </div>
 
-        <button
-          className="delete-comment-btn"
-          onClick={() => deleteComment(comment.id)}
-        >
-          🗑️
-        </button>
-      </div>
-    ))}
-  </div>
-)}
+                      <button
+                        className="delete-comment-btn"
+                        onClick={() => deleteComment(comment.id)}
+                      >
+                        🗑️
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               <CommentBox
                 postId={post.id}

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL || "https://social-media-platform-gli9.onrender.com"}/api`,
+  baseURL: "http://localhost:5000/api",
 });
 
 export default API;
