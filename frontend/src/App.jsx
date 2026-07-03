@@ -6,7 +6,7 @@ import Profile from "./pages/Profile";
 import Reels from "./pages/Reels";
 import CreatePost from "./components/CreatePost";
 import Message from "./pages/Message";
-import Chat from "./pages/chat";
+import Chat from "./pages/Chat";
 import Notifications from "./pages/Notifications";
 import Search from "./pages/Search";
 import Followers from "./pages/Followers";

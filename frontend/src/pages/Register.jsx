@@ -41,7 +41,7 @@ function Register() {
             type="text"
             name="name"
             placeholder="Full Name"
-            value={user.username}
+            value={user.name}
             onChange={handleChange}
             required
           />
