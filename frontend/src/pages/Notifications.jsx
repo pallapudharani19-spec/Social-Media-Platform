@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaHeart, FaComment, FaUserPlus } from "react-icons/fa";
-import "../styles/Notification.css";
 
 function Notifications() {
   const navigate = useNavigate();

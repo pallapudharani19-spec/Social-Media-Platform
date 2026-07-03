@@ -5,8 +5,6 @@ import BottomNav from "../components/BottomNav";
 import {FaUsers} from "react-icons/fa";
 import { useNavigate} from "react-router-dom";
 
-import "../styles/home.css";
-
 function Home() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);

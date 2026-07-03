@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
-import "../styles/profile.css";
 import EditProfileModal from "../components/EditProfileModal";
 
 function Profile() {
