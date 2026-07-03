@@ -1,0 +1,92 @@
+.messages-page{
+    width:100%;
+    max-width:100%;
+    min-height:100vh;
+    background:#fff;
+}
+
+.messages-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px 20px;
+    border-bottom:1px solid #ddd;
+    position:sticky;
+    top:0;
+    background:#fff;
+}
+
+.back-btn{
+    border:none;
+    background:none;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.messages-header h2{
+    margin:0;
+    font-size:24px;
+    font-weight:600;
+}
+
+.search-box{
+    width:calc(100% - 40px);
+    margin:15px 20px;
+    padding:12px 15px;
+    border:none;
+    border-radius:25px;
+    background:#f2f2f2;
+    font-size:15px;
+    outline:none;
+}
+
+.chat-list{
+    width:100%;
+}
+
+.chat-item{
+    display:flex;
+    align-items:center;
+    padding:15px 20px;
+    border-bottom:1px solid #eee;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.chat-item:hover{
+    background:#f7f7f7;
+}
+
+.chat-avatar{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#1877f2;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+    margin-right:15px;
+}
+
+.chat-info{
+    flex:1;
+}
+
+.chat-info h4{
+    margin:0;
+    font-size:17px;
+}
+
+.chat-info p{
+    margin-top:4px;
+    color:#666;
+    font-size:14px;
+}
+
+.chat-time{
+    color:gray;
+    font-size:13px;
+}

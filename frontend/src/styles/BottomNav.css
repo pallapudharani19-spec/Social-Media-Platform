@@ -1,0 +1,17 @@
+.bottom-nav{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:65px;
+    background:white;
+    border-top:1px solid #ddd;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:1000;
+}
+.feed{
+    padding:15px;
+    padding-bottom:90px;
+}

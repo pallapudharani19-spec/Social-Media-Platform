@@ -1,0 +1,44 @@
+.notifications-page{
+  max-width:600px;
+  margin:20px auto;
+  padding:20px;
+}
+
+.notifications-header{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.back-btn{
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:50%;
+  background:#1877f2;
+  color:white;
+  cursor:pointer;
+}
+
+.notification-item{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:15px;
+  border-bottom:1px solid #eee;
+}
+
+.notification-icon{
+  font-size:22px;
+  color:#1877f2;
+}
+
+.notification-text{
+  flex:1;
+}
+
+.notification-time{
+  color:gray;
+  font-size:13px;
+}
