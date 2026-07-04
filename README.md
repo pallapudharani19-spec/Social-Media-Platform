@@ -7,7 +7,7 @@ A full-stack social media web application that enables users to connect, create 
 ## 🚀 Live Demo
 
 *Frontend (Vercel):*  
-https://vercel.com/dharani1905/social-media-platform/8Y2kur8CW8Ko6Z414ZbkTPDH7qgW
+https://social-media-platform-jahjc7b3h-dharani1905.vercel.app/
 
 *Backend API (Render):*  
 https://social-media-platform-1-8ssl.onrender.com
