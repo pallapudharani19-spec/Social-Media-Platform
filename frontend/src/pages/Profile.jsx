@@ -159,7 +159,17 @@ function Profile() {
         <button className="share-btn">
           Share Profile
         </button>
-      </div>
+        <button
+         className="logout-btn"
+         onClick={() =>{
+          localStorage.removeItem("token");
+          localStorage.removeItem("userId");
+          navigate("/");
+         }}
+         >
+          Logout
+          </button>
+          </div>
 
       <hr />
 
