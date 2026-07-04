@@ -14,8 +14,12 @@ function Profile() {
     username: "",
     bio: "",
     posts: [],
+    followers: [],
+    following: [],
   });
-const [showEditModal, setshowEditModal] = useState(false);
+
+  const [showEditModal, setshowEditModal] = useState(false);
+
   useEffect(() => {
     fetchProfile();
   }, []);
@@ -59,11 +63,23 @@ const [showEditModal, setshowEditModal] = useState(false);
     }
   };
 
+  // Image URL Helper
+  const getImageUrl = (img) => {
+    if (!img) return "";
+
+    if (img.startsWith("http")) return img;
+
+    return `https://social-media-platform-1-8ssl.onrender.com${img}`;
+  };
+
   return (
     <div className="profile-page">
 
       <div className="profile-header">
-        <button className="back-btn" onClick={() => navigate("/home")}>
+        <button
+          className="back-btn"
+          onClick={() => navigate("/home")}
+        >
           ←
         </button>
 
@@ -108,39 +124,37 @@ const [showEditModal, setshowEditModal] = useState(false);
         </div>
 
         <div className="profile-stats">
+          <div>
+            <h3>{user.posts?.length || 0}</h3>
+            <p>Posts</p>
+          </div>
 
-  <div>
-    <h3>{user.posts?.length || 0}</h3>
-    <p>Posts</p>
-  </div>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/followers")}
+          >
+            <h3>{user.followers?.length || 0}</h3>
+            <p>Followers</p>
+          </div>
 
-  <div
-    style={{ cursor: "pointer" }}
-    onClick={() => navigate("/followers")}
-  >
-    <h3>{user.followers?.length || 0}</h3>
-    <p>Followers</p>
-  </div>
-
-  <div
-    style={{ cursor: "pointer" }}
-    onClick={() => navigate("/following")}
-  >
-    <h3>{user.following?.length || 0}</h3>
-    <p>Following</p>
-  </div>
-
-</div>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/following")}
+          >
+            <h3>{user.following?.length || 0}</h3>
+            <p>Following</p>
+          </div>
+        </div>
 
       </div>
 
       <div className="profile-buttons">
         <button
-  className="edit-btn"
-  onClick={() => setshowEditModal(true)}
->
-  Edit Profile
-</button>
+          className="edit-btn"
+          onClick={() => setshowEditModal(true)}
+        >
+          Edit Profile
+        </button>
 
         <button className="share-btn">
           Share Profile
@@ -152,27 +166,34 @@ const [showEditModal, setshowEditModal] = useState(false);
       <h4>Your Posts</h4>
 
       <div className="posts-grid">
-        {user.posts?.map((post) => (
-          <div key={post.id} className="grid-box">
-            {post.image ? (
-              <img
-                src={getImageUrl(post.image)}
-                alt=""
-                className="grid-image"
-              />
-            ) : (
-              <p>{post.content}</p>
-            )}
-          </div>
-        ))}
+        {user.posts?.length > 0 ? (
+          user.posts.map((post) => (
+            <div key={post.id} className="grid-box">
+
+              {post.image ? (
+                <img
+                  src={getImageUrl(post.image)}
+                  alt="Post"
+                  className="grid-image"
+                />
+              ) : (
+                <p>{post.content}</p>
+              )}
+
+            </div>
+          ))
+        ) : (
+          <p>No posts yet.</p>
+        )}
       </div>
+
       {showEditModal && (
-  <EditProfileModal
-    user={user}
-    setUser={setUser}
-    closeModal={() => setshowEditModal(false)}
-  />
-)}
+        <EditProfileModal
+          user={user}
+          setUser={setUser}
+          closeModal={() => setshowEditModal(false)}
+        />
+      )}
 
     </div>
   );

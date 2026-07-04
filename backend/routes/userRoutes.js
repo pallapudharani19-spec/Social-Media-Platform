@@ -25,4 +25,5 @@ router.get("/followers", authMiddleware, getFollowers);
 router.get("/following", authMiddleware, getFollowing);
 
 router.get("/:id", authMiddleware, getUserById);
+
 export default router;

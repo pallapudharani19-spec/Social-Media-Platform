@@ -159,12 +159,14 @@ function Home() {
 
                 <button>💬</button>
 
-                <button
-                  className="delete-btn"
-                  onClick={() => deletePost(post.id)}
-                >
-                  🗑️ Delete
-                </button>
+                {post.authorId === Number(localStorage.getItem("userId")) && (
+  <button
+    className="delete-btn"
+    onClick={() => deletePost(post.id)}
+  >
+    🗑️ Delete
+  </button>
+)}
               </div>
 
               {post.comments?.length > 0 && (
